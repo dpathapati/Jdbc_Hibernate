@@ -42,6 +42,42 @@
 		<description></description>
 		<servlet-class>com.dxc.servlet.Logout</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>DeleteExam</servlet-name>
+		<display-name>DeleteExam</display-name>
+		<description></description>
+		<servlet-class>com.dxc.servlet.DeleteExam</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>DeleteMark</servlet-name>
+		<display-name>DeleteMark</display-name>
+		<description></description>
+		<servlet-class>com.dxc.servlet.DeleteMark</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>EditExam</servlet-name>
+		<display-name>EditExam</display-name>
+		<description></description>
+		<servlet-class>com.dxc.servlet.EditExam</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>AddExam</servlet-name>
+		<display-name>AddExam</display-name>
+		<description></description>
+		<servlet-class>com.dxc.servlet.AddExam</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>AddMark</servlet-name>
+		<display-name>AddMark</display-name>
+		<description></description>
+		<servlet-class>com.dxc.servlet.AddMark</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>EditMark</servlet-name>
+		<display-name>EditMark</display-name>
+		<description></description>
+		<servlet-class>com.dxc.servlet.EditMark</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>Validation</servlet-name>
 		<url-pattern>/validation</url-pattern>
@@ -67,5 +103,29 @@
 	<servlet-mapping>
 		<servlet-name>Logout</servlet-name>
 		<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DeleteExam</servlet-name>
+		<url-pattern>/deleteExam</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DeleteMark</servlet-name>
+		<url-pattern>/deleteMark</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>EditExam</servlet-name>
+		<url-pattern>/editExam</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddExam</servlet-name>
+		<url-pattern>/addExam</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddMark</servlet-name>
+		<url-pattern>/addMark</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>EditMark</servlet-name>
+		<url-pattern>/editMark</url-pattern>
 	</servlet-mapping>
 </web-app>

@@ -1,4 +1,4 @@
-package com.dxc.Jdbcservice;
+package com.dxc.service;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.dxc.beans.Student;
+import com.dxc.Hibdao.StudentHibDAO;
 import com.dxc.Jdbcdao.StudentjdbcDAO;
 
 public class StudentServiceImple implements Service<Student> {
@@ -33,6 +34,14 @@ public class StudentServiceImple implements Service<Student> {
 			e.printStackTrace();
 		}
 		return false;
+//		try {
+//			StudentHibDAO stHD=new StudentHibDAO();
+//			return stHD.save(student);
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		return false;
 	}
 
 	@Override
@@ -60,6 +69,14 @@ public class StudentServiceImple implements Service<Student> {
 			e.printStackTrace();
 		}
 		return student;
+//		StudentHibDAO stHD=new StudentHibDAO();
+//		try {
+//			student= stHD.find(id);
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		return student;
 	}
 
 	@Override
@@ -89,6 +106,14 @@ public class StudentServiceImple implements Service<Student> {
 			e.printStackTrace();
 		}
 		return students;
+//		StudentHibDAO stHD=new StudentHibDAO();
+//		try {
+//			students=stHD.findAll();
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		return students;
 	}
 
 	@Override
@@ -116,6 +141,14 @@ public class StudentServiceImple implements Service<Student> {
 			e.printStackTrace();
 		}
 		return false;
+//		StudentHibDAO stHD=new StudentHibDAO();
+//		try {
+//			return stHD.edit(student);
+//		} catch (Exception e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+//		return false;
 	}
 
 	@Override
@@ -144,6 +177,14 @@ public class StudentServiceImple implements Service<Student> {
 			e.printStackTrace();
 		}
 		return res;
+//		StudentHibDAO stHD=new StudentHibDAO();
+//		try {
+//			res=stHD.delete(id);
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		return res;
 	}
 
 	

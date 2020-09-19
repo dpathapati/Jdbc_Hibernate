@@ -1,4 +1,4 @@
-<%@page import="com.dxc.Jdbcservice.StudentServiceImple"%>
+<%@page import="com.dxc.Hibservice.StudentHibServiceImple"%>
 <%@page import="java.util.List"%>
 <%@page import="com.dxc.beans.Student"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -24,7 +24,7 @@
 
 	<%
 		try {
-		List<Student> students = new StudentServiceImple().findAll();
+		List<Student> students = new StudentHibServiceImple().findAll();
 	%>
 	<table border='1' align='center'>
 		<tr>

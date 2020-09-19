@@ -11,8 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+//import com.dxc.HibService.StudentHibServiceImple;
 import com.dxc.Jdbcdao.StudentjdbcDAO;
-import com.dxc.Jdbcservice.StudentServiceImple;
+import com.dxc.service.StudentServiceImple;
 //import com.dxc.service.StudentServiceImplement;
 
 /**

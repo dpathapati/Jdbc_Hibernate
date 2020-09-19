@@ -1,7 +1,6 @@
 package com.dxc.servlet;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,20 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-//import com.dxc.HibService.UserHibService;
-import com.dxc.Jdbcdao.UserJdbcDAO;
-import com.dxc.service.UserServiceImple;
+import com.dxc.service.ExamServiceImple;
 
 /**
- * Servlet implementation class Validation
+ * Servlet implementation class DeleteExam
  */
-public class Validation extends HttpServlet {
+public class DeleteExam extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Validation() {
+    public DeleteExam() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,6 +31,14 @@ public class Validation extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		String examid=request.getParameter("examid");
+		ExamServiceImple examService=new ExamServiceImple();
+		if(examService.delete(examid))
+		{
+			HttpSession session=request.getSession(true);
+			RequestDispatcher r=request.getRequestDispatcher("DisplayExam.jsp");
+			r.forward(request, response);
+		}
 	}
 
 	/**
@@ -42,21 +47,6 @@ public class Validation extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
-		String un=request.getParameter("username");
-		String pw=request.getParameter("password");
-//		response.setContentType("text/html");
-//		PrintWriter out = response.getWriter();
-		
-		if(UserServiceImple.validate(un, pw)) {
-			HttpSession session = request.getSession(true);
-			session.setAttribute("usnme", un);
-			RequestDispatcher rd = request.getRequestDispatcher("DisplayStudents.jsp");
-			rd.forward(request, response);
-			
-		}
-		else {
-			response.sendRedirect("login.jsp");
-		}
 	}
 
 }

@@ -11,8 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dxc.beans.User;
+//import com.dxc.HibService.UserHibService;
 import com.dxc.Jdbcdao.UserJdbcDAO;
-import com.dxc.Jdbcservice.UserServiceImple;
+import com.dxc.service.UserServiceImple;
 
 /**
  * Servlet implementation class Register

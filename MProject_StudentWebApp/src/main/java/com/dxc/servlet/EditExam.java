@@ -1,32 +1,27 @@
 package com.dxc.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.text.ParseException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.dxc.beans.Student;
-//import com.dxc.HibService.StudentHibServiceImple;
-import com.dxc.Jdbcdao.StudentjdbcDAO;
-import com.dxc.service.StudentServiceImple;
-//import com.dxc.service.StudentServiceImplement;
+import com.dxc.beans.Exam;
+import com.dxc.service.ExamServiceImple;
 
 /**
- * Servlet implementation class AddStudent
+ * Servlet implementation class EditExam
  */
-public class AddStudent extends HttpServlet {
+public class EditExam extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddStudent() {
+    public EditExam() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -45,27 +40,15 @@ public class AddStudent extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
-		int id=Integer.parseInt(request.getParameter("id"));
+		String examid=request.getParameter("examid");
 		String name=request.getParameter("name");
-		String dob=request.getParameter("dob");
-		String email=request.getParameter("email");
-		String mobile=request.getParameter("mobile");
-		boolean s=false;
-		try {
-			Student student=new Student(id, name, dob, email, mobile);
-		    s=  new StudentServiceImple().save(student);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		if(s) {
-			PrintWriter out=response.getWriter();
-			out.println("added successfully");
-			RequestDispatcher rd=request.getRequestDispatcher("DisplayStudents.jsp");
-			rd.include(request, response);
+		Exam exam=new Exam(examid, name);
+		ExamServiceImple examService=new ExamServiceImple();
+		if(examService.edit(exam))
+		{
+			HttpSession session=request.getSession(true);
+			RequestDispatcher r=request.getRequestDispatcher("DisplayExam.jsp");
+			r.forward(request, response);
 		}
 	}
 

@@ -27,6 +27,11 @@
 			<version>2.0</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>4.2.2.Final</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>MProject_StudentWebApp</finalName>

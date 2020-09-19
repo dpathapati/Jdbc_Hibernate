@@ -1,7 +1,6 @@
 package com.dxc.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.text.ParseException;
 
@@ -10,23 +9,21 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.dxc.beans.Student;
-//import com.dxc.HibService.StudentHibServiceImple;
-import com.dxc.Jdbcdao.StudentjdbcDAO;
-import com.dxc.service.StudentServiceImple;
-//import com.dxc.service.StudentServiceImplement;
+import com.dxc.beans.Mark;
+import com.dxc.service.MarkServiceImple;
 
 /**
- * Servlet implementation class AddStudent
+ * Servlet implementation class AddMark
  */
-public class AddStudent extends HttpServlet {
+public class AddMark extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddStudent() {
+    public AddMark() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -45,28 +42,36 @@ public class AddStudent extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
+		String examid=request.getParameter("examid");
 		int id=Integer.parseInt(request.getParameter("id"));
-		String name=request.getParameter("name");
-		String dob=request.getParameter("dob");
-		String email=request.getParameter("email");
-		String mobile=request.getParameter("mobile");
-		boolean s=false;
+		int sub1=Integer.parseInt(request.getParameter("sub1"));
+		int sub2=Integer.parseInt(request.getParameter("sub2"));
+		int sub3=Integer.parseInt(request.getParameter("sub3"));
+
 		try {
-			Student student=new Student(id, name, dob, email, mobile);
-		    s=  new StudentServiceImple().save(student);
+			Mark m=new Mark(examid, id, sub1, sub2, sub3);
+			MarkServiceImple markServiceImple=new MarkServiceImple();
+			if(markServiceImple.save(m))
+			{
+				HttpSession session=request.getSession(true);
+				RequestDispatcher r=request.getRequestDispatcher("DisplayMark.jsp");
+				r.forward(request, response);
+			}
+			
 		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if(s) {
-			PrintWriter out=response.getWriter();
-			out.println("added successfully");
-			RequestDispatcher rd=request.getRequestDispatcher("DisplayStudents.jsp");
-			rd.include(request, response);
-		}
+
 	}
 
 }

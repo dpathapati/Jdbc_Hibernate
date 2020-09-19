@@ -1,4 +1,4 @@
-package com.dxc.Jdbcservice;
+package com.dxc.service;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.dxc.beans.User;
+import com.dxc.Hibdao.UserHibDAO;
 import com.dxc.Jdbcdao.UserJdbcDAO;
 
 public class UserServiceImple implements Service<User> {
@@ -28,6 +29,14 @@ public class UserServiceImple implements Service<User> {
 			e.printStackTrace();
 		}
 		return false;
+//		UserHibDAO stHD=new UserHibDAO();
+//		try {
+//			return stHD.validate(username, password);
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		return false;
 		
 
 	}
@@ -55,6 +64,14 @@ public class UserServiceImple implements Service<User> {
 			e1.printStackTrace();
 		}
 		return false;
+//		UserHibDAO stHD=new UserHibDAO();
+//		try {
+//			return stHD.save(e);
+//		} catch (Exception e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+//		return false;
 	}
 
 	@Override

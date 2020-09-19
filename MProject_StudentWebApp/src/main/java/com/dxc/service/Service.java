@@ -1,4 +1,4 @@
-package com.dxc.Jdbcservice;
+package com.dxc.service;
 
 import java.util.List;
 
